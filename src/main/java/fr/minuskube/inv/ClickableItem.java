@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.function.Consumer;
 
-public class ClickableItem {
+public class ClickableItem implements ItemClicker {
 
     private ItemStack item;
     private Consumer<InventoryClickEvent> consumer;
@@ -24,6 +24,11 @@ public class ClickableItem {
     }
 
     public void run(InventoryClickEvent e) { consumer.accept(e); }
+
+    @Override
+    public boolean isButton() {
+        return false;
+    }
 
     public ItemStack getItem() { return item; }
 

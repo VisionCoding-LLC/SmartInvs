@@ -1,6 +1,7 @@
 package fr.minuskube.inv.content;
 
 import fr.minuskube.inv.ClickableItem;
+import fr.minuskube.inv.ItemClicker;
 import fr.minuskube.inv.SmartInventory;
 
 import java.util.HashSet;
@@ -14,8 +15,8 @@ public interface SlotIterator {
         VERTICAL
     }
 
-    Optional<ClickableItem> get();
-    SlotIterator set(ClickableItem item);
+    Optional<ItemClicker> get();
+    SlotIterator set(ItemClicker item);
 
     SlotIterator previous();
     SlotIterator next();
@@ -67,12 +68,12 @@ public interface SlotIterator {
         }
 
         @Override
-        public Optional<ClickableItem> get() {
+        public Optional<ItemClicker> get() {
             return contents.get(row, column);
         }
 
         @Override
-        public SlotIterator set(ClickableItem item) {
+        public SlotIterator set(ItemClicker item) {
             if(canPlace())
                 contents.set(row, column, item);
 
